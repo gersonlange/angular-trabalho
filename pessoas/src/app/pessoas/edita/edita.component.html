@@ -1,3 +1,22 @@
+<form (ngSubmit)="onSubmit(form)" novalidate #form="ngForm">
+  <div class="form-group">
+    <label>Nome</label>
+    <input type="text" [(ngModel)]="item.nome" name="nome"  #nomeField="ngModel" required>
+    <p *ngIf="nomeField.touched && nomeField.invalid" class="alert alert-danger">Nome é obrigatório</p>
+  </div>
+  <div class="form-group">
+    <label>Sobrenome</label>
+    <input type="text" [(ngModel)]="item.sobrenome" name="sobrenome"  #sobrenomeField="ngModel" required>
+    <p *ngIf="sobrenomeField.touched && sobrenomeField.invalid" class="alert alert-danger">Sobrenome é obrigatório</p>
+  </div>
+  <div class="form-group">
+    <label>Idade</label>
+    <input type="text" [(ngModel)]="item.idade" name="idade"  #idadeField="ngModel" required>
+    <p *ngIf="idadeField.touched && idadeField.invalid" class="alert alert-danger">Idade é obrigatório</p>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Salvar</button>
+</form>
+
 <p>
-  edita works!
+  {{item|json}}
 </p>

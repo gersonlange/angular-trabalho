@@ -29,4 +29,18 @@ export class ListaComponent implements OnInit {
       })));
   }
 
+  excluir(id){
+    this.pessoasService.remove(id);
+  }
+  
+  alterar(id){
+    this.router.navigate(['edita',id], { relativeTo: this.route });
+    
+  }
+
+  novo(){
+    this.router.navigate(['edita','novo'], { relativeTo: this.route });
+    
+  }
+
 }

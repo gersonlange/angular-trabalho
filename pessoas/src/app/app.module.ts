@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PessoasModule } from './pessoas/pessoas.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FormsModule } from '@angular/forms';
-import { PessoasModule } from './pessoas/pessoas.module';
+
 
 const config = {
     apiKey: "AIzaSyATw6wjfOgR2os0Azr-Cv5Ufxc7bOLjf9k",
