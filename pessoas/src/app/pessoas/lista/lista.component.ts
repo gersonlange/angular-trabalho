@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PessoasService } from '../pessoas.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaComponent implements OnInit {
 
-  constructor() { }
+  items: Observable<any[]>;
+
+  constructor(
+      private pessoasService: PessoasService,
+      private route: ActivatedRoute,
+      private router: Router) { 
+
+  }
 
   ngOnInit() {
+    this.items=this.pessoasService.list().snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      })));
   }
 
 }
